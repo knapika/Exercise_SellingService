@@ -23,9 +23,7 @@ public class SellingServiceTest {
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
-
-
-
+    
     @Test
     public void notSell() {
         //given
