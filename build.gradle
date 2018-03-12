@@ -1,0 +1,51 @@
+plugins {
+    id "java"
+    id "groovy"
+    id "com.palantir.jacoco-coverage" version "0.4.0"
+    id "maven-publish"
+}
+
+group 'uj.jwzp.w2'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    testCompile(
+            //JUnit
+            'junit:junit:4.12',
+
+            //Spock: groovy + framework
+            'org.codehaus.groovy:groovy-all:2.4.11',
+            'org.spockframework:spock-core:1.1-groovy-2.4',
+
+            //Rich asserting: AssertJ
+            'org.assertj:assertj-core:3.9.0',
+
+            //Mocks: Mockito
+            'org.mockito:mockito-core:2.8.9',
+
+            //Power mock
+            'org.powermock:powermock-api-mockito2:1.7.3',
+            'org.powermock:powermock-module-junit4:1.7.3'
+    )
+}
+
+test {
+    reports {
+        junitXml.enabled = false
+        html.enabled = true
+    }
+}
